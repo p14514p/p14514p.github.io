@@ -1,11 +1,24 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-<title>左爱</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>语文资料网</title>
 </head>
-<h1 style="text-align: center; color: pink;">左爱发布页</h1>
-<p style="text-align: center;"><a href="1.html">第一章</a></p>
-
+<body>
+    <form style="text-align: center;">
+        <h1>朝花夕拾全文解析下载页</h1>
+        <input type="password" id="password" placeholder="请输入下载口令">
+        <button type="button" onclick="checkPassword()">下载</button>
+    </form>
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            if (password === "yes6661145") {
+                window.location.href = "index1.html";
+            } else {
+                alert("口令错误 请购买资源");
+                window.location.href = "https://www.zybang.com/";
+            }
+        }
+    </script>
 </body>
+</html>
