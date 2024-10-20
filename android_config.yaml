@@ -18,7 +18,7 @@ inviteUrl: "https://vpn.shaoming.asia/#/register?code="
 # 节点延迟的展示相关
 nodeDelayShow:
   type: 1 # 展示方式：0=延迟数值，1=信号图标
-  colorBest: 1000 # 延迟数值/图标颜色：延迟小于此值为绿色
+  colorBest: 1500 # 延迟数值/图标颜色：延迟小于此值为绿色
   colorGood: 2500 # 延迟数值/图标颜色：延迟小于此值并大于{colorBest}为黄色，大于此值为红色
 
 # 是否显示流量明细入口 true=显示，false=隐藏
