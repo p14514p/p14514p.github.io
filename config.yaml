@@ -1,0 +1,10 @@
+[
+    {
+        "name": "关于本网站的注释，这个name字段随便写，不会被读取",
+        "url": "https://shaoming.asia"
+    },
+    {
+        "name": "网站",
+        "url": "https://jc.mchooray.xyz"
+    },
+]
