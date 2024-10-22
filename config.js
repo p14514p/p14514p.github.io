@@ -38,21 +38,12 @@ window.config = {
   // 客户端列表
   clients: {
     windows: {
-      download_url: 'https://www.test.com', // 下载地址
+      download_url: '/articles/read?id=6', // 下载地址
       version: '1.0.01', // 教程地址
     },
-    macos: {
+    android: {
       download_url: '/articles/read?id=6',
       version: '1.0.01',
-    },
-    android: {
-      download_url: 'https://www.test.com',
-      version: '1.0.01',
-    },
-    ios: {
-      download_url: '/user/doc_ios',
-      version: '1.0.01',
-      video: '/download/video/ios.mp4', //视频地址
     },
   },
 
