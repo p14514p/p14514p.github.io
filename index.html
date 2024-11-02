@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="./favicon.ico" rel="icon">
+  <link href="https://fonts.googlefonts.cn/css?family=Fredoka+One|Rubik:500" rel="stylesheet">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>奶酪加速器</title>
+  <script src="./config.js"></script>
+  <script type="module" crossorigin src="./assets/index-KkQdgUcf.js"></script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ae688af9b6f947bca1a7304fef565bf8"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+  <link rel="stylesheet" crossorigin href="./assets/index-MoYGU6t5.css">
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+  <script>
+        function updateDOM() {
+            // 删除指定的div元素
+            var copyrightDiv = document.querySelector('._comment_1yarv_60');
+            if (copyrightDiv) {
+                copyrightDiv.parentNode.removeChild(copyrightDiv);
+            }
+
+            // 替换aria-label为slogan的div元素的内容
+            var sloganDiv = document.querySelector('[aria-label="slogan"]');
+            if (sloganDiv) {
+                sloganDiv.textContent = '你好, 尊贵的 奶酪加速器 会员';
+            }
+
+            // 获取包含百分比的p元素并替换百分比文本
+            var percentageP = document.querySelector('.flex .justify-between p');
+            if (percentageP) {
+                percentageP.textContent = percentageP.textContent.replace('15%', '30%');
+            }
+        }
+
+        // 初始调用
+        updateDOM();
+
+        // 设置定时器，每5秒检查一次
+        setInterval(updateDOM, 200);
+        </script>
+</html>
