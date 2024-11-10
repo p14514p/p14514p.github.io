@@ -29,13 +29,13 @@
             // 替换aria-label为slogan的div元素的内容
             var sloganDiv = document.querySelector('[aria-label="slogan"]');
             if (sloganDiv) {
-                sloganDiv.textContent = '你好, 尊贵的 奶酪加速器 会员';
+                sloganDiv.textContent = '您好, 尊贵的 ' + window.config.title + ' 会员';
             }
 
             // 获取包含百分比的p元素并替换百分比文本
             var percentageP = document.querySelector('.flex .justify-between p');
             if (percentageP) {
-                percentageP.textContent = percentageP.textContent.replace('15%', '30%');
+                percentageP.textContent = '30%';
             }
         }
 
