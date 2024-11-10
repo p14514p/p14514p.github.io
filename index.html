@@ -32,26 +32,24 @@
             if (sloganDiv) {
                 sloganDiv.textContent = '您好, 尊贵的 ' + window.config.title + ' 会员';
             }
-            // 等待DOM加载完成
-            document.addEventListener('DOMContentLoaded', function() {
-            // 查找包含验证码标签的label元素
-            var captchaLabel = document.querySelector('label[for="email"] span.text-red-500');
+          
+            // 查找验证码输入框前的元素
+            var captchaLabel = document.querySelector('span.text-red-500 + input[type="text"].ant-input');
 
-            // 查找已经存在的cf-turnstile元素
-            var existingTs = document.querySelector('.ant-input-group .cf-turnstile');
-
-            // 如果cf-turnstile元素不存在，则进行添加
-            if (captchaLabel && !existingTs) {
+            // 检查是否已经插入了cf-turnstile元素
+            if (!document.querySelector('.cf-turnstile')) {
             // 创建新的div元素
             var newDiv = document.createElement('div');
             newDiv.className = 'cf-turnstile';
             newDiv.setAttribute('data-sitekey', '<YOUR_SITE_KEY>'); // 替换<YOUR_SITE_KEY>为你的实际站点密钥
 
-            // 插入新的div元素到验证码label和输入框之间
-            var captchaInputGroup = document.querySelector('.ant-input-group');
-            if (captchaLabel && captchaInputGroup) {
-            captchaInputGroup.insertBefore(newDiv, captchaLabel.nextSibling);
-    }
+            // 插入新的div元素到验证码文本和输入框之间
+            captchaLabel.parentNode.insertBefore(newDiv, captchaLabel.nextSibling);
+  }
+
+请确保将<YOUR_SITE_KEY>替换为你的实际站点密钥。这段代码会在文档加载完成后执行，并且只有在没有找到现有的.cf-turnstile元素时才会插入新的div。
+
+
   }
 });
         }
