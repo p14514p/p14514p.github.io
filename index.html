@@ -9,10 +9,9 @@
   <title>奶酪加速器</title>
   <script src="./config.js"></script>
   <script type="module" crossorigin src="./assets/index-KkQdgUcf.js"></script>
-  <!-- Cloudflare -->
+  <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ae688af9b6f947bca1a7304fef565bf8"}'></script>
-  <script defer src='https://challenges.cloudflare.com/turnstile/v0/api.js' async defer></script>
-  <!-- End Cloudflare -->
+  <!-- End Cloudflare Web Analytics -->
   <link rel="stylesheet" crossorigin href="./assets/index-MoYGU6t5.css">
 </head>
 
@@ -30,23 +29,9 @@
             // 替换aria-label为slogan的div元素的内容
             var sloganDiv = document.querySelector('[aria-label="slogan"]');
             if (sloganDiv) {
-                sloganDiv.textContent = '您好, 尊贵的 ' + window.config.title + ' 会员';
+                sloganDiv.textContent = '您好, 尊贵的' + window.config.title +'会员';
             }
-          
-            // 查找验证码输入框前的元素
-            var captchaLabel = document.querySelector('span.text-red-500 + input[type="text"].ant-input');
-
-            // 检查是否已经插入了cf-turnstile元素
-            if (!document.querySelector('.cf-turnstile')) {
-            // 创建新的div元素
-            var newDiv = document.createElement('div');
-            newDiv.className = 'cf-turnstile';
-            newDiv.setAttribute('data-sitekey', '0x4AAAAAAAwzLrOJ1PAfzXNL'); // 替换<YOUR_SITE_KEY>为你的实际站点密钥
-
-            // 插入新的div元素到验证码文本和输入框之间
-            captchaLabel.parentNode.insertBefore(newDiv, captchaLabel.nextSibling);
-    }
-}
+        }
 
         // 初始调用
         updateDOM();
