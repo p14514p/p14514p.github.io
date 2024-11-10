@@ -64,7 +64,7 @@ window.config = {
       "https://gd-hbimg.huaban.com/246ac6f06aeeab3b0c7e5908e7693b9a0e1b8a5249899-hB42f3_fw1200", // 首页banner背景图片
   },
   notice: {
-    interval: 7, // 同一公告显示时间间隔，单位：天
+    interval: 1, // 同一公告显示时间间隔，单位：天
     repeat: true, // 是否重复显示同一公告，false为只显示一次
     onlyHome: false, // 是否只在首页显示公告
   },
