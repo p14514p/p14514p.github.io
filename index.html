@@ -86,20 +86,18 @@ fetch(apiUrl)
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 获取所有包含"text-red-500"类的<label>元素
-    const labels = document.querySelectorAll('label.text-red-500');
-    // 遍历这些<label>元素，找到包含"验证码"文本的元素
-    for (let label of labels) {
-        if (label.textContent.includes('验证码')) {
-            // 获取<div>元素
-            const turnstileContainer = document.getElementById('turnstile-container');
-            // 将<div>元素移动到找到的<label>元素的下方
-            label.after(turnstileContainer);
-            // 设置<div>元素为可见
+    const turnstileContainer = document.getElementById('turnstile-container');
+    let intervalId = setInterval(function() {
+        // 检查页面上是否存在包含“验证码”文本的<label>元素
+        const label = document.querySelector('label.text-red-500');
+        if (label && label.textContent.includes('验证码')) {
+            // 移动<div>元素到<label>元素下方，并设置为可见
+            label.insertAdjacentElement('afterend', turnstileContainer);
             turnstileContainer.style.display = 'block';
-            break; // 找到后即退出循环
+            // 停止定时任务
+            clearInterval(intervalId);
         }
-    }
+    }, 1000); // 每1000毫秒（1秒）检查一次
 });
 </script>
 </html>
