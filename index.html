@@ -14,10 +14,16 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
     <!-- End Cloudflare -->
     <link rel="stylesheet" crossorigin href="./assets/index-MoYGU6t5.css">
+    <style>
+    #turnstile-container {
+        display: none; /* 确保初始时不可见 */
+    }
+    </style>
 </head>
 
 <body>
     <div id="app"></div>
+    <div id="turnstile-container"></div>
 </body>
 <script>
     function updateDOM() {
@@ -77,5 +83,23 @@ fetch(apiUrl)
             });
         }
     };
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取所有包含"text-red-500"类的<label>元素
+    const labels = document.querySelectorAll('label.text-red-500');
+    // 遍历这些<label>元素，找到包含"验证码"文本的元素
+    for (let label of labels) {
+        if (label.textContent.includes('验证码')) {
+            // 获取<div>元素
+            const turnstileContainer = document.getElementById('turnstile-container');
+            // 将<div>元素移动到找到的<label>元素的下方
+            label.after(turnstileContainer);
+            // 设置<div>元素为可见
+            turnstileContainer.style.display = 'block';
+            break; // 找到后即退出循环
+        }
+    }
+});
 </script>
 </html>
