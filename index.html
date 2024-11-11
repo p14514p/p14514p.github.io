@@ -2,42 +2,80 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <link href="./favicon.ico" rel="icon">
-  <link href="https://fonts.googlefonts.cn/css?family=Fredoka+One|Rubik:500" rel="stylesheet">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>奶酪加速器</title>
-  <script src="./config.js"></script>
-  <script type="module" crossorigin src="./assets/index-KkQdgUcf.js"></script>
-  <!-- Cloudflare -->
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ae688af9b6f947bca1a7304fef565bf8"}' async defer></script>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
-  <!-- End Cloudflare -->
-  <link rel="stylesheet" crossorigin href="./assets/index-MoYGU6t5.css">
+    <meta charset="UTF-8">
+    <link href="./favicon.ico" rel="icon">
+    <link href="https://fonts.googlefonts.cn/css?family=Fredoka+One|Rubik:500" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>奶酪加速器</title>
+    <script src="./config.js"></script>
+    <script type="module" crossorigin src="./assets/index-KkQdgUcf.js"></script>
+    <!-- Cloudflare -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ae688af9b6f947bca1a7304fef565bf8"}' async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    <!-- End Cloudflare -->
+    <link rel="stylesheet" crossorigin href="./assets/index-MoYGU6t5.css">
 </head>
 
 <body>
-  <div id="app"></div>
+    <div id="app"></div>
 </body>
-  <script>
-        function updateDOM() {
-            // 删除指定的div元素
-            var copyrightDiv = document.querySelector('._comment_1yarv_60');
-            if (copyrightDiv) {
-                copyrightDiv.parentNode.removeChild(copyrightDiv);
-            }
-
-            // 替换aria-label为slogan的div元素的内容
-            var sloganDiv = document.querySelector('[aria-label="slogan"]');
-            if (sloganDiv) {
-                sloganDiv.textContent = '您好, 尊贵的' + window.config.title +'会员';
-            }
+<script>
+    function updateDOM() {
+        // 删除指定的div元素
+        var copyrightDiv = document.querySelector('._comment_1yarv_60');
+        if (copyrightDiv) {
+            copyrightDiv.parentNode.removeChild(copyrightDiv);
         }
 
-        // 初始调用
-        updateDOM();
+        // 替换aria-label为slogan的div元素的内容
+        var sloganDiv = document.querySelector('[aria-label="slogan"]');
+        if (sloganDiv) {
+            sloganDiv.textContent = '您好, 尊贵的' + window.config.title + '会员';
+        }
+    }
 
-        // 设置定时器，每5秒检查一次
-        setInterval(updateDOM, 200);
-        </script>
+    // 初始调用
+    updateDOM();
+
+    // 设置定时器，每5秒检查一次
+    setInterval(updateDOM, 200);
+</script>
+<script>
+// API路径
+var apiPath = 'api/v1/user/notice/fetch';
+
+// 构建完整的API URL
+var apiUrl = window.config.host + apiPath;
+
+// 发起API请求
+fetch(apiUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('网络请求错误');
+        }
+        return response.json(); // 解析JSON格式的响应体
+    })
+    .then(data => {
+        // 检查is_recaptcha的值
+        if (data && data.data && data.data.is_recaptcha === 1) {
+            // 如果is_recaptcha为1，提取recaptcha_site_key的值并设置为全局变量
+            window.recaptcha_site_key = data.data.recaptcha_site_key;
+        } else {
+            //异常处理
+            console.log('验证码未在后台启用或接收到的数据异常');
+        }
+    })
+    .catch(error => {
+        console.error('网络请求错误', error);
+    });
+</script>
+<script>
+    window.onload = function() {
+        if (window.turnstile) {
+            turnstile.render("#turnstile-container", {
+                sitekey: window.recaptcha_site_key // 替换为您的站点密钥
+            });
+        }
+    };
+</script>
 </html>
